@@ -1,0 +1,42 @@
+<resources xmlns:xliff="http://schemas.android.com/apk/res-auto">
+    <string name="app_name">Baking</string>
+    <string name="play">Play</string>
+    <string name="pause">Pause</string>
+    <string name="restart">Restart</string>
+    <string name="notification_text">Press play to hear the piece!</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="no_network">No network connectivity and hence cannot buffer the video</string>
+
+    <!-- SyncAdapter related -->
+    <string name="sync_account_type">baking.example.com</string>
+    <string name="content_authority">com.example.tanse.baking</string>
+
+    <!--content description-->
+    <string name="recipe_ingredients">Ingredients required for this recipe</string>
+    <string name="recipe_detail_info">Recipe Steps Information</string>
+    <string name="ingredient_name">Ingredient Name</string>
+    <string name="ingredient_measure">Ingredient Measure</string>
+    <string name="recipe_name">RecipeName: <xliff:g id="condition">%1$s</xliff:g></string>
+    <string name="recipe_step_description">Details of this particular step</string>
+    <string name="previous_step_button">Use this button to go to previous step</string>
+    <string name="next_step_button">Use this button to go to next step</string>
+
+
+
+
+    <!--Key name for storing recipe status in sharedpreferences-->
+    <string name="pref_recipe_status_key" translatable="false">recipe-status</string>
+    <string name="pref_video_url_key" translatable="false">video-url</string>
+    <string name="pref_recipe_id_key" translatable="false">recipe-id</string>
+    <string name="pref_recipe_name_key" translatable="false">recipe-name</string>
+
+
+    <!--Empty Recipe Database-->
+    <string name="empty_recipe_list">No Recipe Information Available</string>
+    <string name="empty_recipe_list_no_network">No Recipe Information Available. The network is not avialable to fetch recipe data</string>
+    <string name="empty_recipe_list_server_down">No Recipe Information Available. The server is not returning recipe data</string>
+    <string name="empty_recipe_list_server_error">No Recipe Information Available. The server is not returning valid recipe data.Please check for an updated version of this App</string>
+
+
+
+</resources>

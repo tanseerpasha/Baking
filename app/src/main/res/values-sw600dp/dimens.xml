@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_medium">12dp</dimen>
+    <dimen name="padding_large">16dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_medium">12dp</dimen>
+    <dimen name="margin_large">16dp</dimen>
+    <dimen name="text_size_medium">16sp</dimen>
+    <dimen name="text_size_large">18sp</dimen>
+    <dimen name="text_size_extra_large">20sp</dimen>
+
+    <!--Widget-->
+
+    <dimen name="widget_recipe_name_default_width">120dp</dimen>
+    <dimen name="widget_recipe_name_default_height">140dp</dimen>
+    <dimen name="widget_recipe_name_min_resize_width">100dp</dimen>
+    <dimen name="widget_recipe_name_min_resize_height">@dimen/widget_recipe_name_default_height</dimen>
+
+    <dimen name="widget_recipe_ingredient_default_width">250dp</dimen>
+    <dimen name="widget_recipe_ingredient_default_height">250dp</dimen>
+    <dimen name="widget_recipe_ingredient_min_resize_width">220dp</dimen>
+    <dimen name="widget_recipe_ingredient_min_resize_height">@dimen/widget_recipe_ingredient_default_height</dimen>
+
+</resources>

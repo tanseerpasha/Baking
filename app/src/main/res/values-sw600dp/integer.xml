@@ -1,0 +1,3 @@
+<resources>
+    <integer name="recyclerview_column">2</integer>
+</resources>

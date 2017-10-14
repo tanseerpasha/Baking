@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.tanse.baking">
+
+    <!--to allow app to access http site to download movie details-->
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- Permissions required by the sync adapter -->
+    <uses-permission
+        android:name="android.permission.READ_SYNC_SETTINGS"/>
+    <uses-permission
+        android:name="android.permission.WRITE_SYNC_SETTINGS"/>
+    <uses-permission
+        android:name="android.permission.AUTHENTICATE_ACCOUNTS"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".recipenames.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".recipedetails.DetailActivity"
+            android:label="Recipe Details"
+            android:launchMode="singleTop"
+            android:parentActivityName="com.example.tanse.baking.recipenames.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.tanse.baking.recipenames.MainActivity" />
+        </activity>
+
+        <activity
+            android:name=".recipeingredients.IngredientsActivity"
+            android:label="Recipe Ingredients"
+            android:parentActivityName="com.example.tanse.baking.recipedetails.DetailActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.tanse.baking.recipedetails.DetailActivity" />
+        </activity>
+
+        <activity
+            android:name=".recipesteps.StepsActivity"
+            android:label="Recipe Steps"
+            android:theme="@style/Theme.AppCompat.Light"
+            android:parentActivityName="com.example.tanse.baking.recipedetails.DetailActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.tanse.baking.recipedetails.DetailActivity" />
+        </activity>
+
+        <receiver android:name=".recipesteps.StepsFragment$MediaReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.MEDIA_BUTTON" />
+            </intent-filter>
+        </receiver>
+
+        <provider
+            android:authorities="@string/content_authority"
+            android:name=".data.Provider"
+            android:exported="false"
+            android:syncable="true" />
+
+        <!-- SyncAdapter's dummy authentication service -->
+        <service android:name=".sync.AuthenticatorService">
+            <intent-filter>
+                <action android:name="android.accounts.AccountAuthenticator" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accounts.AccountAuthenticator"
+                android:resource="@xml/authenticator" />
+        </service>
+
+        <!-- The SyncAdapter service -->
+        <service
+            android:name=".sync.SyncService"
+            android:exported="true"
+            >
+            <intent-filter>
+                <action android:name="android.content.SyncAdapter" />
+            </intent-filter>
+            <meta-data
+                android:name="android.content.SyncAdapter"
+                android:resource="@xml/syncadapter" />
+        </service>
+
+        <!-- The widget service and provider -->
+        <receiver
+            android:name=".widget.RecipeNameWidgetProvider"
+            android:label="Baking">
+
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="com.example.tanse.baking.ACTION_DATA_UPDATED"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_recipe_name_info"/>
+        </receiver>
+        <service
+            android:name=".widget.RecipeNameWidgetRemoteViewsService"
+            android:permission="android.permission.BIND_REMOTEVIEWS"
+            android:exported="false"/>
+
+        <receiver
+            android:name=".widget.RecipeIngredientWidgetProvider"
+            android:label="Ingredients"  >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="com.example.tanse.baking.ACTION_RECIPE_CHANGED"/>
+                <action android:name="com.example.tanse.baking.ACTION_DATA_UPDATED"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_recipe_name_info"/>
+        </receiver>
+        <service
+            android:name=".widget.RecipeIngredientWidgetRemoteViewsService"
+            android:permission="android.permission.BIND_REMOTEVIEWS"
+            android:exported="false"/>
+
+
+    </application>
+
+</manifest>
